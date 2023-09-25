@@ -1,1 +1,1 @@
-# https://thaipduong.github.io/SE3HamDL/
+# https://thaipduong.github.io/LieGroupHamDL/
