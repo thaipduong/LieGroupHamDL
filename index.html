@@ -202,7 +202,7 @@ code {
             
 
             <br>
-            Accurate models of robot dynamics are critical for safe and stable control and generalization to novel operational conditions. Hand-designed models, however, may be insufficiently accurate, even after careful parameter tuning. This motivates the use of machine learning techniques to approximate the robot dynamics over a training set of state-control trajectories. The dynamics of many robots, including ground, aerial, and underwater vehicles, are described in terms of their SE(3) pose and generalized velocity, and satisfy conservation of energy principles. This paper proposes a Hamiltonian formulation over the SE(3) manifold of the structure of a neural ordinary differential equation (ODE) network to approximate the dynamics of a rigid body. In contrast to a black-box ODE network, our formulation guarantees total energy conservation by construction. We develop energy shaping and damping injection control for the learned, potentially underactuated SE(3) Hamiltonian dynamics to enable a unified approach for stabiliziation and trajectory tracking with various platforms, including pendulum, rigid-body, and quadrotor systems.
+            Accurate models of robot dynamics are critical for safe and stable control and generalization to novel operational conditions. Hand-designed models, however, may be insufficiently accurate, even after careful parameter tuning. This motivates the use of machine learning techniques to approximate the robot dynamics over a training set of state-control trajectories. The dynamics of many robots are described in terms of their generalized coordinates on a matrix Lie group, e.g. on SE(3) for ground, aerial, and underwater vehicles, and generalized velocity, and satisfy conservation of energy principles. This paper proposes a (port-)Hamiltonian formulation over a Lie group of the structure of a neural ordinary differential equation (ODE) network to approximate the robot dynamics. In contrast to a black-box ODE network, our formulation guarantees energy conservation principle and Lie group's  constraints by construction and explicitly accounts for energy-dissipation effect such as friction and drag forces in the dynamics model. We develop energy shaping and damping injection control for the learned, potentially under-actuated Hamiltonian dynamics to enable a unified approach for stabilization and trajectory tracking with various robot platforms.
             <br><br>
 
       <hr>
@@ -214,7 +214,7 @@ code {
                     <!-- <a href="http://arxiv.org/pdf/1603.08511.pdf"> -->
                   <!-- <td><a href="#"><img class="layered-paper-big" style="height:175px" src="./resources/images/paper.png"/></a></td> -->
                   <td><a href="https://arxiv.org/pdf/2106.12782.pdf"><img style="height:300px" src="./resources/images/thumbnails.png"/></a></td>
-                  <td><span style="font-size:14pt">Thai Duong, Nikolay Atanasov<br><br>
+                  <td><span style="font-size:14pt">Thai Duong, Abdullah Altawaitan, Jason Stanley, Nikolay Atanasov<br><br>
                           Hamiltonian-based Neural ODE Networks on Lie Groups For Dynamics Learning and Control<br><br>
                   Under Review, 2023.<br><br>
                       <a href="https://arxiv.org/pdf/2106.12782.pdf">[pdf]</a> &nbsp; &nbsp;
@@ -228,6 +228,7 @@ code {
       
       
                 <hr>
+<!--
                 <center><h1>Overview and Results</h1></center>
                 <table align=center width=900px>
                     <tr>
@@ -242,11 +243,13 @@ code {
                 </table>
                 <br>
           <hr>
+-->
          <!-- <table align=center width=550px> -->
             <table align=center width=800>
-             <center><h1>Additional Details</h1></center>
+             <center><h1>Overview</h1></center>
                 <tr>
                     <br>
+<!--
             <td width=600px>
                       <center>
                           <span style="font-size:28px">Settings
@@ -254,18 +257,35 @@ code {
                           <br>
                     </center>
                     </td>
+-->
             <br>
-            <table align=center width=600px>
+            <table align=center width=900px>
                 <tr>
-                    <td width=600px>
+                    <td width=900px>
                       <center>
-                          <a href="./resources/images/DL.jpg"><img src = "./resources/images/DL.jpg" width="600px"></img></href></a><br>
+                          <a href="./resources/images/DL.jpg"><img src = "./resources/images/DL.jpg" width="900px"></img></href></a><br>
                     </center>
                     </td>
                 </tr>
-                    <td width=600px>
+                    <td width=900px>
                       <center>
                           <span style="font-size:18px"><i> Given a training dataset from the true dynamics, we want to find an approximated dynamics with parameter theta that minimizes the loss function.</i>
+                    </center>
+                    </td>
+                </tr>
+            </table>
+                    <br><br>
+                    <table align=center width=900px>
+                <tr>
+                    <td width=600px>
+                      <center>
+                          <a href="./resources/images/SE3_states.png"><img src = "./resources/images/LieGroupStates.jpg" width="900px"></img></href></a><br>
+                    </center>
+                    </td>
+                </tr>
+                    <td width=900px>
+                      <center>
+                          <span style="font-size:18px"><i>The dynamics of many robots are described in terms of their robot states on Lie groups, and satisfy conservation of energy principles, e.g. via Hamiltonian formulation.</i>
                     </center>
                     </td>
                 </tr>
@@ -273,67 +293,31 @@ code {
                 <br><br>
                     <table align=center width=600px>
                 <tr>
-                    <td width=600px>
+                    <td width=900px>
                       <center>
-                          <a href="./resources/images/SE3_states.png"><img src = "./resources/images/SE3_states.png" width="600px"></img></href></a><br>
+                          <a href="./resources/images/SE3_states.png"><img src = "./resources/images/SE3_Ham.jpg" width="900px"></img></href></a><br>
                     </center>
                     </td>
                 </tr>
-                    <td width=600px>
+                    <td width=900px>
                       <center>
-                          <span style="font-size:18px"><i>The dynamics of many robots, including ground, aerial, and underwater vehicles, are described in terms of their SE(3) pose and generalized velocity, which evolves on the SE(3) manifold, and satisfy conservation of energy principles</i>
-                    </center>
-                    </td>
-                </tr>
-            </table>
-            <br><br>
-                <table align=center width=600px>
-                <tr>
-                    <td width=600px>
-                      <center>
-                          <a href="./resources/images/arch.png"><img src = "./resources/images/arch.png" width="600px"></img></href></a><br>
-                    </center>
-                    </td>
-                </tr>
-                    <td width=600px>
-                      <center>
-                          <span style="font-size:18px"><i> To enforce these constraints by construction, we embed these constraints in the architecture of the parametric function approximated dynamics</i>
+                          <span style="font-size:18px"><i>For example, the states of ground, aerial, and underwater vehicles are described by their SE(3) pose and generalized velocity, which evolves on the SE(3) manifold,</i>
                     </center>
                     </td>
                 </tr>
             </table>
             <br><br>
                 <table align=center width=600px>
-                <tr>
-                    <td width=600px>
-                      <center>
-                          <a href="./resources/images/neural_ode_dl.png"><img src = "./resources/images/neural_ode_dl.png" width="400px"></img></href></a><br>
-                    </center>
-                    </td>
-                </tr>
-                    <td width=600px>
-                      <center>
-                          <span style="font-size:18px"><i> We place the approximated dynamics function in a neural ODE framework (Chen et. al., NeurIPS'18) which predicts the state at a future time using an ODE solver and back-propagates the loss gradients efficiently using adjoint method.</i>
-                    </center>
-                    </td>
-                </tr>
-            </table>
-            <br><br>
-<table align=center width=900px>
                 <tr>
                     <td width=900px>
                       <center>
-                    <a href="./resources/gif/gym_state_control.gif"><img src = "./resources/gif/gym_state_control.gif" width="500px"></img></href></a>
-                    <a href="./resources/gif/gym_animation_control.gif"><img src = "./resources/gif/gym_animation_control.gif" width="300px"></img></href></a>
-                    
-                    
-                    <br>
+                          <a href="./resources/images/arch.png"><img src = "./resources/images/LieGroup_ModelDesign.jpg" width="900px"></img></href></a><br>
                     </center>
                     </td>
                 </tr>
-                    <td width=600px>
+                    <td width=900px>
                       <center>
-                          <span style="font-size:18px"><i> For pendulum, we collect data by applying random control on a pendulum gym simulator. After learning the dynamics from data, we design an energy-based controller to drive the pendulum toward the upright position using the learned dynamics function.</i>
+                          <span style="font-size:18px"><i> To enforce these constraints by construction, we embed these constraints in the architecture of the parametric function approximated dynamics</i>
                     </center>
                     </td>
                 </tr>
@@ -343,6 +327,50 @@ code {
                 <tr>
                     <td width=900px>
                       <center>
+                          <a href="./resources/images/neural_ode_dl.png"><img src = "./resources/images/neural_ode_dl.jpg" width="900px"></img></href></a><br>
+                    </center>
+                    </td>
+                </tr>
+                    <td width=900px>
+                      <center>
+                          <span style="font-size:18px"><i> We place the approximated dynamics function in a neural ODE framework (Chen et. al., NeurIPS'18) which predicts the state at a future time using an ODE solver and back-propagates the loss gradients efficiently using adjoint method.</i>
+                    </center>
+                    </td>
+                </tr>
+            </table>
+            <br>
+            <table align=center width=800>
+                
+                <hr>
+             <center><h1>Experiments</h1></center>
+<!--
+                <tr>
+<table align=center width=900px>
+                <tr>
+                    <td width=900px>
+                      <center>
+                    <a href="./resources/gif/gym_state_control.gif"><img src = "./resources/gif/gym_state_control.gif" width="440px"></img></href></a>
+                    <a href="./resources/gif/gym_animation_control.gif"><img src = "./resources/gif/gym_animation_control.gif" width="440px"></img></href></a>
+                    
+                    
+                    <br>
+                    </center>
+                    </td>
+                </tr>
+                    <td width=900px>
+                      <center>
+                          <span style="font-size:18px"><i> For pendulum, we collect data by applying random control on a pendulum gym simulator. After learning the dynamics from data, we design an energy-based controller to drive the pendulum toward the upright position using the learned dynamics function.</i>
+                    </center>
+                    </td>
+                </tr>
+-->
+            </table>
+            <br><br>
+                <table align=center width=900px>
+                <tr>
+                    <td width=900px>
+                      <center>
+<!--
                     <a href="./resources/gif/data1.gif"><img src = "./resources/gif/data1.gif" width="260px"></img></href></a>
                     <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data2.gif" width="260px"></img></href></a>
                     <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data11.gif" width="260px"></img></href></a>
@@ -352,34 +380,69 @@ code {
                     <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data18.gif" width="260px"></img></href></a>
                     <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data21.gif" width="260px"></img></href></a>
                     <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data4.gif" width="260px"></img></href></a>
-
+-->
+                <video  width="440" muted autoplay loop>
+                <source src="resources/images/data_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                         <a href="./resources/images/Drone1.jpg"><img src = "./resources/images/Drone1.jpg" width="440px"></img></href></a> 
                     <br>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/data_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/data_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+
                     </center>
                     </td>
                 </tr>
-                    <td width=600px>
+                    <td width=900px>
                       <center>
-                          <span style="font-size:18px"><i> For quadrotors, we use a crazyflie drone simulator in Pybullet and collect training data from 18 flights.</i>
+                          <span style="font-size:18px"><i> For quadrotors, we use our customized PX4 quadrotor and collect training data from 9 flights between waypoints.</i>
                     </center>
                     </td>
                 </tr>
             </table>
             <br><br>
-            <table align=center width=900px>
+<table align=center width=900px>
                 <tr>
                     <td width=900px>
                       <center>
-                    <a href="./resources/gif/tracking_results.gif"><img src = "./resources/gif/tracking_2d.gif" width="500px"></img></href></a>
-                    <a href="./resources/gif/traj_results.gif"><img src = "./resources/gif/tracking_3d.gif" width="300px"></img></href></a>
-                    <a href="./resources/gif/trajtracking.gif"><img src = "./resources/gif/trajtracking.gif" width="800px"></img></href></a>
-                    
+<!--
+                    <a href="./resources/gif/data1.gif"><img src = "./resources/gif/data1.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data2.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data11.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data15.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data14.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data13.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data18.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data21.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data4.gif" width="260px"></img></href></a>
+-->
+                <video  width="440" muted autoplay loop>
+                <source src="resources/images/eval_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/eval_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
                     <br>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/eval_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+<a href="./resources/images/eval_2.gif"><img src = "./resources/images/eval_2.gif" width="440px"></img></href></a>
+
                     </center>
                     </td>
                 </tr>
-                    <td width=600px>
+                    <td width=900px>
                       <center>
-                          <span style="font-size:18px"><i> After learning the dynamics from data, we design an energy-based controller for trajectory tracking. We verify our controller design with a diamond-shaped trajectory. The Crazyflie simulated drone is able to track the trajectory using the learned Halmiltonian-based dynamics.</i>
+                          <span style="font-size:18px"><i> After learning the dynamics from data, we design an energy-based controller for trajectory tracking. We verify our controller design with circle, lemniscate and piecewise-linear trajectories using the learned Halmiltonian-based dynamics.</i>
                     </center>
                     </td>
                 </tr>
@@ -388,9 +451,88 @@ code {
               </tr>
 
             </table>
-            <br>
+          <br><br>
+                <table align=center width=900px>
+                <tr>
+                    <td width=900px>
+                      <center>
+<!--
+                    <a href="./resources/gif/data1.gif"><img src = "./resources/gif/data1.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data2.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data11.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data15.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data14.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data13.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data18.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data21.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data4.gif" width="260px"></img></href></a>
+-->
+                <video  width="440" muted autoplay loop>
+                <source src="resources/images/data_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                         <a href="./resources/images/Drone1.jpg"><img src = "./resources/images/Drone2_soda.jpg" width="440px"></img></href></a> 
+                    <br>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/data_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/data_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
 
-          
+                    </center>
+                    </td>
+                </tr>
+                    <td width=900px>
+                      <center>
+                          <span style="font-size:18px"><i> If the dynamics change, e.g. by adding a coffee can to the quadrotor, we re-collect training data again and re-train the model for only 100 steps, starting from the previously-trained model.</i>
+                    </center>
+                    </td>
+                </tr>
+            </table>
+                        <br><br>
+<table align=center width=900px>
+                <tr>
+                    <td width=900px>
+                      <center>
+<!--
+                    <a href="./resources/gif/data1.gif"><img src = "./resources/gif/data1.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data2.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data11.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data15.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data14.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data13.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data18.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data21.gif" width="260px"></img></href></a>
+                    <a href="./resources/gif/data2.gif"><img src = "./resources/gif/data4.gif" width="260px"></img></href></a>
+-->
+                <video  width="440" muted autoplay loop>
+                <source src="resources/images/eval_soda_1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/eval_soda_2.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+                    <br>
+                                          <video  width="440" muted autoplay loop>
+                <source src="resources/images/eval_soda_3.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+                </video>
+<a href="./resources/images/eval_2.gif"><img src = "./resources/images/eval_soda_2.gif" width="440px"></img></href></a>
+
+                    </center>
+                    </td>
+                </tr>
+                    <td width=900px>
+                      <center>
+                          <span style="font-size:18px"><i> Our controller performs better now with the updated model, tracking circle, lemniscate and piecewise-linear trajectories.</i>
+                    </center>
+                    </td>
+                </tr>
+            </table>
 
         <hr>
          <center><h1>Code</h1></center>
@@ -446,7 +588,7 @@ code {
                     <td>
                       <left>
                 <center><h1>Acknowledgements</h1></center>
-                We gratefully acknowledge support from NSF RI IIS-2007141 and ARL DCIST CRA W911NF-17-2-0181.
+                We gratefully acknowledge support from NSF CCF-2112665 (TILOS).
                 <br>
                 This webpage template was borrowed from <a href="https://akanazawa.github.io/cmr/">https://akanazawa.github.io/cmr/</a>.
             </left>
