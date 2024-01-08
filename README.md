@@ -82,7 +82,7 @@ Run ```python ./examples/quadrotor/comparison.py``` and ```python ./examples/qua
 <img src="figs/quadrotor/loss_log_comparison_quadrotor.png" height="180">
 <img src="figs/quadrotor/hamiltonian_comparison_quadrotor_learned.png" height="180">
 <img src="figs/quadrotor/SO3_constraints_comparison_quadrotor.png" height="180">
-<img src="figs/quadrotor/tracking_results.png" height="180">
+<img src="figs/quadrotor/traj_comparison.png" height="180">
 </p>
 
 Run ```python ./examples/quadrotor/control_quadrotor_SE3.py``` to test the energy-based controller with the learned dynamics.
