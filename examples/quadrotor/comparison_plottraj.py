@@ -103,37 +103,6 @@ if __name__ == "__main__":
     model_unstructuredHam, stats_unstructuredHam = get_model_unstructuredHam()
 
 
-    # # Load train/test data
-    # train_x_hat = stats['train_x_hat']
-    # test_x_hat = stats['test_x_hat']
-    # train_x = stats['train_x']
-    # test_x = stats['test_x']
-    # t_eval = stats['t_eval']
-    # print("Loaded data!")
-
-    # # Plot loss
-    # fig = plt.figure(figsize=figsize, linewidth=5)
-    # ax = fig.add_subplot(111)
-    # train_loss = stats['train_loss']
-    # test_loss = stats['test_loss']
-    # train_loss_unstructured = stats_unstructured['train_loss']
-    # test_loss_unstructured = stats_unstructured['test_loss']
-    # train_loss_unstructuredHam= stats_unstructuredHam['train_loss']
-    # test_loss_unstructuredHam = stats_unstructuredHam['test_loss']
-    # ax.plot(train_loss_unstructured[0:5000], 'b', linewidth=line_width, label='black-box')
-    # ax.plot(train_loss_unstructuredHam[0:5000], 'g', linewidth=line_width, label='unstructured Hamiltonian')
-    # ax.plot(train_loss[0:5000], 'r', linewidth=line_width, label='structured Hamiltonian')
-    # #ax.plot(test_loss[0:], 'r', linewidth=line_width, label='test loss')
-    # plt.xlabel("iterations", fontsize=fontsize_ticks)
-    # plt.xticks(fontsize=fontsize_ticks)
-    # plt.yticks(fontsize=fontsize_ticks)
-    # plt.yscale('log')
-    # #plt.ylim(1e-7, 100)
-    # plt.legend(fontsize=fontsize, loc = 3)
-    # plt.grid()
-    # plt.savefig('./png/journal/loss_log_comparison_quadrotor.pdf', bbox_inches='tight')
-    # plt.show()
-
 
 # Initial condition from gym
 import gym

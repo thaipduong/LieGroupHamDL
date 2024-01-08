@@ -59,7 +59,7 @@ if __name__ == "__main__":
     plt.yscale('log')
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/loss_log.pdf', bbox_inches='tight')
+    plt.savefig('./png/loss_log.png', bbox_inches='tight')
     plt.show()
 
     # Get state q from a range of pendulum angle theta
@@ -92,7 +92,7 @@ if __name__ == "__main__":
     #plt.ylim(-0.5, 2.5)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/B_x.pdf', bbox_inches='tight')
+    plt.savefig('./png/B_x.png', bbox_inches='tight')
     plt.show()
 
     # Plot V(q)
@@ -106,7 +106,7 @@ if __name__ == "__main__":
     plt.ylim(-8, 12)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/V_x.pdf', bbox_inches='tight')
+    plt.savefig('./png/V_x.png', bbox_inches='tight')
     plt.show()
 
     # Plot M^-1(q)
@@ -130,7 +130,7 @@ if __name__ == "__main__":
     plt.ylim(-0.5, 6.0)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/M_x_all.pdf', bbox_inches='tight')
+    plt.savefig('./png/M_x_all.png', bbox_inches='tight')
     plt.show()
 
     # Plot M^-1(q)
@@ -154,5 +154,5 @@ if __name__ == "__main__":
     plt.ylim(-0.02, 0.18)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/Dw.pdf', bbox_inches='tight')
+    plt.savefig('./png/Dw.png', bbox_inches='tight')
     plt.show()

@@ -78,7 +78,7 @@ if __name__ == "__main__":
     plt.ylim(1e-7, 100)
     plt.legend(fontsize=fontsize, loc = 1)
     plt.grid()
-    plt.savefig('./png/journal/loss_log_comparison_pendulum.pdf', bbox_inches='tight')
+    plt.savefig('./png/loss_log_comparison_pendulum.png', bbox_inches='tight')
     plt.show()
 
 
@@ -181,7 +181,7 @@ plt.xticks(fontsize=24)
 plt.yticks(fontsize=24)
 plt.legend(fontsize=24)
 plt.grid()
-plt.savefig('./png/journal/hamiltonian_comparison.pdf', bbox_inches='tight')
+plt.savefig('./png/hamiltonian_comparison.png', bbox_inches='tight')
 plt.show()
 
 ############################## PLOT SE(3) CONSTRAINTS ROLLED OUT FROM OUR DYNAMICS ###############################
@@ -236,7 +236,7 @@ plt.ylim(1e-5, 3000000)
 plt.yscale('log')
 plt.legend(fontsize=fontsize, loc = "center right")
 plt.grid()
-plt.savefig('./png/journal/SO3_constraints_comparison.pdf', bbox_inches='tight')
+plt.savefig('./png/SO3_constraints_comparison.png', bbox_inches='tight')
 plt.show()
 
 ############################## PLOT PHASE PORTRAIT ROLLED OUT FROM OUR DYNAMICS ###############################
@@ -258,6 +258,6 @@ plt.legend(fontsize=fontsize, loc = 1)
 plt.xlim(-2, 3.5)
 plt.ylim(-7.0, 9.0)
 plt.grid()
-plt.savefig('./png/journal/phase_portrait_comparison.pdf', bbox_inches='tight')
+plt.savefig('./png/phase_portrait_comparison.png', bbox_inches='tight')
 plt.show()
 

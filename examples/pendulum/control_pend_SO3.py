@@ -34,7 +34,7 @@ def plot_traj(traj, t_eval):
     plt.legend(fontsize=fontsize)
     plt.tight_layout()
     plt.grid()
-    plt.savefig('./png/control_theta.pdf', bbox_inches='tight')
+    plt.savefig('./png/control_theta.png', bbox_inches='tight')
     plt.show()
 
     fig = plt.figure(figsize= figsize)
@@ -45,7 +45,7 @@ def plot_traj(traj, t_eval):
     plt.legend(fontsize=fontsize)
     plt.tight_layout()
     plt.grid()
-    plt.savefig('./png/control_thetadot.pdf', bbox_inches='tight')
+    plt.savefig('./png/control_thetadot.png', bbox_inches='tight')
     plt.show()
 
     fig = plt.figure(figsize= figsize)
@@ -57,7 +57,7 @@ def plot_traj(traj, t_eval):
     plt.legend(fontsize=fontsize)
     plt.tight_layout()
     plt.grid()
-    plt.savefig('./png/control_theta_thetadot.pdf', bbox_inches='tight')
+    plt.savefig('./png/control_theta_thetadot.png', bbox_inches='tight')
     plt.show()
 
     fig = plt.figure(figsize=figsize)
@@ -68,7 +68,7 @@ def plot_traj(traj, t_eval):
     plt.legend(fontsize=fontsize)
     plt.tight_layout()
     plt.grid()
-    plt.savefig('./png/control_input.pdf', bbox_inches='tight')
+    plt.savefig('./png/control_input.png', bbox_inches='tight')
     plt.show()
 
 def get_model():

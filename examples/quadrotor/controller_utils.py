@@ -322,7 +322,7 @@ def plot_states1D(s_traj, s_plan, fig_num=None):
     lines, labels = [sum(lol, []) for lol in zip(*lines_labels)]
     fig.legend(lines, labels, loc='lower center', ncol=2, prop={'size': 12})
     plt.subplots_adjust(left=0.1, right=0.98, top=0.93, wspace=0.3)
-    plt.savefig('./png/tracking_results.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/tracking_results.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
 
@@ -460,7 +460,7 @@ def quadplot_update(s_traj, s_plan, t_curr=None):
     if t_curr:
         h_ax.set_title('Simulation t = {0:2.3f}'.format(t_curr))
     h_ax.view_init(elev=25., azim=35)
-    plt.savefig('./png/traj.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/traj.png', bbox_inches='tight', pad_inches=0.1)
     plt.show(block=True)
 
 
@@ -510,7 +510,7 @@ def quadplot_comparison(s_gt, s_structuredHam, s_unstructuredHam, s_unstructured
     if t_curr:
         h_ax.set_title('Simulation t = {0:2.3f}'.format(t_curr))
     h_ax.view_init(elev=31., azim=128)
-    plt.savefig('./png/traj_comparison.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/traj_comparison.png', bbox_inches='tight', pad_inches=0.1)
     plt.show(block=True)
 
 

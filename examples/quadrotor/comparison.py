@@ -131,7 +131,7 @@ if __name__ == "__main__":
     #plt.ylim(1e-7, 100)
     plt.legend(fontsize=fontsize, loc = 3)
     plt.grid()
-    plt.savefig('./png/journal/loss_log_comparison_quadrotor.pdf', bbox_inches='tight')
+    plt.savefig('./png/loss_log_comparison_quadrotor.png', bbox_inches='tight')
     plt.show()
 
 
@@ -228,7 +228,7 @@ learned_Ham = np.array(learned_Ham)
 # plt.xticks(fontsize=24)
 # plt.yticks(fontsize=24)
 # plt.legend(fontsize=24)
-# plt.savefig('./png/journal/hamiltonian_comparison_quadrotor.pdf', bbox_inches='tight')
+# plt.savefig('./png/hamiltonian_comparison_quadrotor.png', bbox_inches='tight')
 # plt.show()
 
 fig = plt.figure(figsize=figsize)
@@ -243,7 +243,7 @@ plt.xticks(fontsize=24)
 plt.yticks(fontsize=24)
 plt.legend(fontsize=24)
 plt.grid()
-plt.savefig('./png/journal/hamiltonian_comparison_quadrotor_learned.pdf', bbox_inches='tight')
+plt.savefig('./png/hamiltonian_comparison_quadrotor_learned.png', bbox_inches='tight')
 plt.show()
 
 
@@ -257,7 +257,7 @@ plt.xticks(fontsize=32)
 plt.yticks(fontsize=32)
 #plt.legend(fontsize=24)
 plt.grid()
-plt.savefig('./png/journal/hamiltonian.pdf', bbox_inches='tight')
+plt.savefig('./png/hamiltonian.png', bbox_inches='tight')
 plt.show()
 ############################## PLOT SE(3) CONSTRAINTS ROLLED OUT FROM OUR DYNAMICS ###############################
 
@@ -311,7 +311,7 @@ plt.yticks(fontsize=fontsize_ticks)
 plt.yscale('log')
 plt.legend(fontsize=fontsize)
 plt.grid()
-plt.savefig('./png/journal/SO3_constraints_comparison_quadrotor.pdf', bbox_inches='tight')
+plt.savefig('./png/SO3_constraints_comparison_quadrotor.png', bbox_inches='tight')
 plt.show()
 
 
@@ -328,7 +328,7 @@ plt.yticks(fontsize=fontsize_ticks)
 plt.yscale('log')
 plt.legend(fontsize=fontsize)
 plt.grid()
-plt.savefig('./png/journal/SO3_constraints.pdf', bbox_inches='tight')
+plt.savefig('./png/SO3_constraints.png', bbox_inches='tight')
 plt.show()
 
 #######################################################

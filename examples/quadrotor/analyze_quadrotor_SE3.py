@@ -57,7 +57,7 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize_ticks)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/journal/loss_log.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/loss_log.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
     # Pick a sample test trajectory
@@ -86,7 +86,7 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize_ticks)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/journal/SO3_constraints_test.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/SO3_constraints_test.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
     # This is the generalized coordinates q = pose
@@ -108,7 +108,7 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize_ticks)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/journal/V_x.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/V_x.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
     # Plot M1^-1(q)
@@ -132,7 +132,7 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize_ticks)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/journal/M1_x_all.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/M1_x_all.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
     # Plot M2^-1(q)
@@ -155,7 +155,7 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize_ticks)
     plt.legend(fontsize=fontsize, loc = 'lower right')
     plt.grid()
-    plt.savefig('./png/journal/M2_x_all.pdf', bbox_inches='tight')
+    plt.savefig('./png/M2_x_all.png', bbox_inches='tight')
     plt.show()
 
     # Plot g_v(q)
@@ -170,7 +170,7 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize_ticks)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/journal/g_v_x.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/g_v_x.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
 
     # Plot g_omega(q)
@@ -196,5 +196,5 @@ if __name__ == "__main__":
     plt.yticks(fontsize=fontsize_ticks)
     plt.legend(fontsize=fontsize)
     plt.grid()
-    plt.savefig('./png/journal/g_w_x.pdf', bbox_inches='tight', pad_inches=0.1)
+    plt.savefig('./png/g_w_x.png', bbox_inches='tight', pad_inches=0.1)
     plt.show()
