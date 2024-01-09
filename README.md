@@ -43,8 +43,8 @@ Run ```python ./examples/pendulum/comparison.py``` to verify that compared to ot
 
 Run ```python ./examples/pendulum/control_pend_SO3.py``` to test the energy-based controller with the learned dynamics.
 <p float="left">
-<img src="figs/pendulum/control_theta_thetadot.png" width="200">
-<img src="figs/pendulum/control_input.png" width="200">
+<img src="figs/pendulum/control_theta_thetadot.png" width="300">
+<img src="figs/pendulum/control_input.png" width="300">
 <img src="figs/pendulum/pendulum_animation_control.gif" width="300">
 </p>
 
