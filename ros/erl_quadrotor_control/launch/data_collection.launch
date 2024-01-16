@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<launch>
+    <arg name="world" default="empty"/>
+    <arg name="scale" default="1.0"/>
+    <arg name="gui" default="false"/>
+    <arg name="x" default="0.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="0.3"/>
+    <arg name="R" default="0.0"/>
+    <arg name="P" default="0.0"/>
+    <arg name="Y" default="0"/>
+    <!--############### Control Method ###################-->
+    <!--
+      0: PX4 
+    -->
+    <arg name="control_method" default="0"/>
+    
+    <!--############### ERL Quadrotor Control ###################-->
+    <group if="$(eval control_method == 0)">
+      <arg name="control" default="PX4"/>
+      <!-- Launch offboard node -->
+      <node name="data_collection" pkg="erl_quadrotor_control" type="data_collection" output="screen">
+        <param name="controlMethod" value="$(arg control)"/>
+      </node>
+    </group>
+
+    <!-- Launch remote node -->
+    <node name="dummy_remote" pkg="erl_quadrotor_control" type="dummy_remote_node" output="screen"/>
+    
+    <!-- Launch remote node -->
+    <node name="mocap_sim_node" pkg="erl_quadrotor_control" type="mocap_sim_node" output="screen"/>
+
+    <!--############### RVIZ ###################-->
+    <!-- Launch rviz -->
+    <node pkg="rviz" type="rviz" name="rviz"
+          args="-d $(find erl_quadrotor_control)/rviz/quadrotor.rviz"/>
+
+    <!--############### PX4 Simulator ###################-->
+    <!-- Launch PX4 simulator -->
+    <include file="$(find px4)/launch/mavros_posix_sitl.launch">
+		<arg name="x" value = "$(arg x)" />
+		<arg name="y" value = "$(arg y)" />
+		<arg name="z" value = "$(arg z)" />
+		<arg name="R" value = "$(arg R)" />
+		<arg name="P" value = "$(arg P)" />
+		<arg name="Y" value = "$(arg Y)" />
+    </include>
+
+    <!--############### ODOM to MAP TF ###################-->
+    <node pkg="tf" type="static_transform_publisher" name="map_odom_broadcaster" args="0 0 0 0 0 0 odom map 1000" />
+
+    <!--############### ROSBAG ###################-->
+    <arg name="rosbag_directory" value="/home/erl/se3hamdl_ws/src/dataset"/>
+    <node pkg="rosbag" type="record" name="bag_collection" 
+          args="record -o $(arg rosbag_directory)/sim_se3hamdl_frd_thrust_torque -a"/>
+</launch>
