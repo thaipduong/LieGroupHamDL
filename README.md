@@ -93,6 +93,9 @@ Run ```python ./examples/quadrotor/control_quadrotor_SE3.py``` to test the energ
 <img src="figs/quadrotor/gif/traj_results.gif" height="250">
 </p>
 
+## Demo with PX4 simulated quadrotors
+Please check out our branch "PX4" for demos with PX4 simulated quadrotors.
+
 ## Citation
 If you find our papers/code useful for your research, please cite our work as follows.
 
