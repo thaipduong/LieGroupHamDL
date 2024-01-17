@@ -2,99 +2,103 @@
 This repo provides code for our paper "Port-Hamiltonian Neural ODE Networks on Lie Groups For Robot Dynamics Learning and Control".
 Please check out our project website for more details: https://thaipduong.github.io/LieGroupHamDL/.
 
-## Dependencies
-Our code is tested with Ubuntu 18.04 and Python 3.7, Python 3.8. It depends on the following Python packages: 
+This branch contains ROS packages for our experiments with PX4 drones. It's tested with:
+- Ubuntu 18.04
+- ROS Melodic
+- Gazebo 9
+- PX4 (release version 1.10.0 for Ubuntu 18.04)
 
-```torchdiffeq 0.1.1, torchdiffeq 0.2.3```
-
-```gym 0.18.0, gym 1.21.0```
-
-```gym-pybullet-drones: https://github.com/utiasDSL/gym-pybullet-drones```
-
-```torch 1.4.0, torch 1.9.0```
-
-```numpy 1.20.1```
-
-```scipy 1.5.3```
-
-```matplotlib 3.3.4```
-
-```pyglet 1.5.27``` (pendulum rendering not working with pyglet >= 2.0.0)
-
-***Notes: NaN errors might happen during training with ```torch 1.10.0``` or newer due to numerical issues!!!!!!!!! Please switch to float64 to fix this.***
-
-## Demo with pendulum
-Run ```python ./examples/pendulum/train_pend_SO3_friction.py``` to train the model with data collected from the pendulum environment. It might take some time to train. A pretrained model is stored in ``` ./examples/pendulum/data/run1_pend_friction/pendulum-so3ham_ode-rk4-5p.tar ```
-
-Run ```python ./examples/pendulum/analyze_pend_SO3.py``` to plot the generalized mass inverse M^-1(q), the potential energy V(q), and the control coefficient g(q)
-<p float="left">
-<img src="figs/pendulum/M_x_all.png" height="180">
-<img src="figs/pendulum/V_x.png" height="180">
-<img src="figs/pendulum/Dw.png" height="180">
-<img src="figs/pendulum/B_x.png" height="180">
-</p>
-
-Run ```python ./examples/pendulum/comparison.py``` to verify that compared to other baselines, our framework learns better, respects energy conservation, SE(3) constraints, and the phase portrait of a trajectory rolled out from the learned dynamics.
-<p float="left">
-<img src="figs/pendulum/loss_log_comparison_pendulum.png" height="170">
-<img src="figs/pendulum/SO3_constraints_comparison.png" height="170">
-<img src="figs/pendulum/phase_portrait_comparison.png" height="170">
-</p>
-
-Run ```python ./examples/pendulum/control_pend_SO3.py``` to test the energy-based controller with the learned dynamics.
-<p float="left">
-<img src="figs/pendulum/control_theta_thetadot.png" width="300">
-<img src="figs/pendulum/control_input.png" width="300">
-<img src="figs/pendulum/pendulum_animation_control.gif" width="300">
-</p>
+# Setup in Ubuntu 18.04
+Installation instructions for Ubuntu 18.04. Ubuntu 18.04 requires ROS Melodic, Gazebo9 and PX4 Firmware release 1.10.0
+_________________________________________________________________
 
 
-## Demo with quadrotor
-Run ```python ./examples/quadrotor/train_quadrotor_SE3.py``` to train the model with data collected from the pybullet drone environment. It might take some time to train. A pretrained model is stored in ``` ./examples/quadrotor/data/quadrotor-se3ham-rk4-5p.tar ```
-### Data collection
-<p float="left">
-<img src="figs/quadrotor/gif/data1.gif" width="200">
-<img src="figs/quadrotor/gif/data2.gif" width="200">
-<img src="figs/quadrotor/gif/data11.gif" width="200">
-<img src="figs/quadrotor/gif/data15.gif" width="200">
-<img src="figs/quadrotor/gif/data14.gif" width="200">
-<img src="figs/quadrotor/gif/data13.gif" width="200">
-<img src="figs/quadrotor/gif/data18.gif" width="200">
-<img src="figs/quadrotor/gif/data21.gif" width="200">
-<img src="figs/quadrotor/gif/data4.gif" width="200">
-<img src="figs/quadrotor/gif/data9.gif" width="200">
-<img src="figs/quadrotor/gif/data6.gif" width="200">
-<img src="figs/quadrotor/gif/data19.gif" width="200">
-</p>
+## First time setup:
+1. Install ROS Melodic under Ubuntu 18.04 http://wiki.ros.org/melodic/Installation/Ubuntu
+2. Run ubuntu_sim_ros_melodic.sh from https://dev.px4.io/v1.10/en/setup/dev_env_linux_ubuntu.html#rosgazebo
+     - This installs additional tools (mavros, px4 sitl) necessary for integration with px4 and running/visualizing drones.
+     ```
+     wget https://raw.githubusercontent.com/PX4/Devguide/v1.10/build_scripts/ubuntu_sim_ros_melodic.sh
+     chmod +x ubuntu_sim_ros_melodic.sh
+     source ubuntu_sim_ros_melodic.sh
+     ```
+3. Dependencies
+    - Install mavros
+    ```dependencies
+    sudo apt-get install ros-melodic-mavros ros-melodic-mavros-extras
+    ```
+    - This installs python tools for the GUI
+    ```
+    sudo apt install libqt4-dev
+    sudo apt install python-qt4 pyqt4-dev-tools
+    sudo apt install python-pyside pyside-tools
+    ```
+4. Install our modified PX4 firmware
+    - Clone the PX4 firmware repository: https://github.com/PX4/Firmware
+    - The default PX4 location for this package: ~/PX4/Firmware
+    ```
+    git clone --branch release/1.10 git@github.com:ExistentialRobotics/erl_quadrotor_firmware.git --recursive
+    cd Firmware
+    git submodule update --init --recursive
+    bash ./Tools/setup/ubuntu.sh
+    make px4_sitl_default gazebo
+    ```
+    - Upgrade ```sudo apt upgrade libignition-math2``` and ```sudo apt upgrade libsdformat6``` before ```bash ./Tools/setup/ubuntu.sh``` if running into symbol errors with gazebo
+    - Change ```#define HAS_GYRO TRUE``` to ```#define HAS_GYRO true``` in this file ```Tools/sitl_gazebo/include/gazebo_opticalflow_plugin.h``` if running into errors with higher version of gcc.
+
+## ERL Quadrotor Control 
+* Clone our repository ```git@github.com:thaipduong/LieGroupHamDL.git```, checkout ```PX4``` branch and copy the packages in ```ros``` folder in the ```~/catkin_ws/src``` directory:
+
+```angular2html
+git clone git@github.com:thaipduong/LieGroupHamDL.git
+git checkout PX4
+cp ros/* ~/catkin_ws/src/
+```
 
 
+## Geometric Control (KumarRobotics)
+* Clone the repository ```kr_mav_control.git``` in the ```~/catkin_ws/src``` directory: 
 
-Run ```python ./examples/quadrotor/analyze_quadrotor_SE3.py``` to plot the generalized mass inverse M^-1(q), the potential energy V(q), and the control coefficient g(q)
-<p float="left">
-<img src="figs/quadrotor/M1_x_all.png" height="180">
-<img src="figs/quadrotor/M2_x_all.png" height="180">
-<img src="figs/quadrotor/V_x.png" height="180">
-<img src="figs/quadrotor/g_v_x.png" height="180">
-<img src="figs/quadrotor/g_w_x.png" height="180">
-</p>
+```
+$ cd ~/catkin_ws/src/
+$ git clone git@github.com:KumarRobotics/kr_mav_control.git
+```
 
-Run ```python ./examples/quadrotor/comparison.py``` and ```python ./examples/quadrotor/comparison_plottraj.py``` to verify that compared to other baselines, our framework learns better, respects energy conservation and SE(3) constraints by construction.
-<p float="left">
-<img src="figs/quadrotor/loss_log_comparison_quadrotor.png" height="180">
-<img src="figs/quadrotor/hamiltonian_comparison_quadrotor_learned.png" height="180">
-<img src="figs/quadrotor/SO3_constraints_comparison_quadrotor.png" height="180">
-<img src="figs/quadrotor/traj_comparison.png" height="180">
-</p>
+* Next, change the line ```<library path="lib/libso3cmd_to_mavros_nodelet">``` to ```<library path="lib/libkr_mavros_interface">``` in the file ```/interfaces/kr_mavros_interface/nodelet_plugin.xml```. 
+* Finally, run the following commands:
 
-Run ```python ./examples/quadrotor/control_quadrotor_SE3.py``` to test the energy-based controller with the learned dynamics.
-<p float="left">
-<img src="figs/quadrotor/gif/tracking_results.gif" height="250">
-<img src="figs/quadrotor/gif/trajtracking.gif" height="250">
-<img src="figs/quadrotor/gif/traj_results.gif" height="250">
-</p>
+```
+$ cd ~/catkin_ws
+$ catkin config -DCMAKE_BUILD_TYPE=Release
+$ catkin build
+```
 
-## Demo with PX4 simulated quadrotors
-Please check out our branch "PX4" for demos with PX4 simulated quadrotors.
+## Collect data using the PX4 simulator 
+* Make sure the path ```px4_dir``` to your PX4 Firmware is updated in ```erl_quadrotor_control/scripts/launch-common.sh```
+* Run ```data_collection.sh``` to collect data
+* Run ```convert_data_from_rosbag.launch``` to convert the collected rosbag to a dataset in .npz format.
+```
+$ cd ~/catkin_ws/src/erl_quadrotor_control/scripts
+$ chmod +x data_collection.sh
+$ ./data_collection.sh 
+$ roslaunch convert_data_from_rosbag.launch
+```
+
+## Training model:
+* Run ```training/examples/quadrotor_px4/train_quadrotor_SE3_PX4.py``` with the .npz file above to train. A pre-collected dataset is provided.
+```
+python training/examples/quadrotor_px4/train_quadrotor_SE3_PX4.py
+```
+* Run ```training/examples/quadrotor_px4/save_torchscript_quadrotor_SE3_PX4.py``` to save the trained model to a torchscript file, which is used for our controller in C++.
+
+## Trajectory tracking with the trained model in C++
+* Update the trained model path in ```~\catkin_ws\src\erl_quadrotor_control\launch\sim_actuator.launch```. A pretrained model is provided in the package.
+* Run ```trajectory_tracking.sh``` to test our controller with the learned model:
+```angular2html
+$ cd ~/catkin_ws/src/erl_quadrotor_control/scripts
+$ chmod +x trajectory_tracking.sh
+$ ./trajectory_tracking.sh
+```
 
 ## Citation
 If you find our papers/code useful for your research, please cite our work as follows.
