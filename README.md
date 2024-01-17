@@ -34,7 +34,7 @@ _________________________________________________________________
     sudo apt install python-pyside pyside-tools
     ```
 4. Install our modified PX4 firmware
-    - Clone the PX4 firmware repository: https://github.com/PX4/Firmware
+    - Clone the PX4 firmware repository: git@github.com:ExistentialRobotics/erl_quadrotor_firmware.git
     - The default PX4 location for this package: ~/PX4/Firmware
     ```
     git clone --branch release/1.10 git@github.com:ExistentialRobotics/erl_quadrotor_firmware.git --recursive
