@@ -84,6 +84,11 @@ $ ./data_collection.sh
 $ roslaunch convert_data_from_rosbag.launch
 ```
 
+
+https://github.com/thaipduong/LieGroupHamDL/assets/40247151/7c062b83-70a8-4516-9b15-982d5193af2b
+
+
+
 ## Training model:
 * Run ```training/examples/quadrotor_px4/train_quadrotor_SE3_PX4.py``` with the .npz file above to train. A pre-collected dataset is provided.
 ```
@@ -99,6 +104,10 @@ $ cd ~/catkin_ws/src/erl_quadrotor_control/scripts
 $ chmod +x trajectory_tracking.sh
 $ ./trajectory_tracking.sh
 ```
+
+
+https://github.com/thaipduong/LieGroupHamDL/assets/40247151/25a5788c-4711-4e80-954b-a301120bacd3
+
 
 ## Citation
 If you find our papers/code useful for your research, please cite our work as follows.
