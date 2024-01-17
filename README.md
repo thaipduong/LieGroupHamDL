@@ -96,6 +96,16 @@ Run ```python ./examples/quadrotor/control_quadrotor_SE3.py``` to test the energ
 ## Demo with PX4 simulated quadrotors
 Please check out our branch "PX4" for demos with PX4 simulated quadrotors.
 
+Data collection
+
+https://github.com/thaipduong/LieGroupHamDL/assets/40247151/733f017d-4cc2-4f29-b020-fa753d3fffce
+
+Trajectory tracking with learned dynamics
+
+https://github.com/thaipduong/LieGroupHamDL/assets/40247151/bfd06715-bba2-42dc-b423-83c0cd5017ca
+
+
+
 ## Citation
 If you find our papers/code useful for your research, please cite our work as follows.
 
