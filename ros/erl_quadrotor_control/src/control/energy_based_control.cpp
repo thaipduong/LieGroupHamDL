@@ -12,12 +12,18 @@ namespace ERLControl{
         KR_ = KR;
         Kw_ = Kw;
 
-        std::cout << "Loading G(q) from " << Gnet_path << std::endl;
-        module_gnet = torch::jit::load(Gnet_path);
-        std::cout << "Loading Dv(q) from " << Dvnet_path<< std::endl;
-        module_Dvnet = torch::jit::load(Dvnet_path);
-        std::cout << "Loading Dw(q) from " << Dwnet_path << std::endl;
-        module_Dwnet = torch::jit::load(Dwnet_path);
+        if (!Gnet_path.empty()){
+          std::cout << "Loading G(q) from " << Gnet_path << std::endl;
+          module_gnet = torch::jit::load(Gnet_path);
+        }
+        if (!Dvnet_path.empty()){
+          std::cout << "Loading Dv(q) from " << Dvnet_path<< std::endl;
+          module_Dvnet = torch::jit::load(Dvnet_path);
+        }
+        if (!Dwnet_path.empty()){
+          std::cout << "Loading Dw(q) from " << Dwnet_path << std::endl;
+          module_Dwnet = torch::jit::load(Dwnet_path);
+        }
 
 
     }
