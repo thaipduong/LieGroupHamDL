@@ -109,7 +109,7 @@ https://github.com/thaipduong/LieGroupHamDL/assets/40247151/bfd06715-bba2-42dc-b
 ## Citation
 If you find our papers/code useful for your research, please cite our work as follows.
 
-1. T. Duong, A. Altawaitan, J. Stanley, N. Atanasov. Port-Hamiltonian Neural ODE Networks on Lie Groups For Robot Dynamics Learning and Control. under review, 2023.
+1. T. Duong, A. Altawaitan, J. Stanley, N. Atanasov. [Port-Hamiltonian Neural ODE Networks on Lie Groups For Robot Dynamics Learning and Control](https://thaipduong.github.io/LieGroupHamDL/). under review, 2023.
 ```
 @article{duong23porthamiltonian,
 author = {Thai Duong, Abdullah Altawaitan, Jason Stanley AND Nikolay Atanasov},
