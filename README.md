@@ -94,7 +94,7 @@ Run ```python ./examples/quadrotor/control_quadrotor_SE3.py``` to test the energ
 </p>
 
 ## Demo with PX4 simulated quadrotors
-Please check out our branch "PX4" for demos with PX4 simulated quadrotors.
+Please check out our branch "PX4" and follow instructions in [README](https://github.com/thaipduong/LieGroupHamDL/blob/PX4/README.md) for demos with PX4 simulated quadrotors.
 
 Data collection
 
