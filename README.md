@@ -33,6 +33,11 @@ _________________________________________________________________
     sudo apt install python-qt4 pyqt4-dev-tools
     sudo apt install python-pyside pyside-tools
     ```
+
+    - This install ```torchode``` python package for training with dataset that has irregular time steps, which is common for data from real systems such as PX4 quadrotor.
+    ```
+    pip install torchode
+    ```
 4. Install our modified PX4 firmware
     - Clone the PX4 firmware repository: git@github.com:ExistentialRobotics/erl_quadrotor_firmware.git
     - The default PX4 location for this package: ~/PX4/Firmware
