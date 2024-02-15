@@ -117,7 +117,16 @@ https://github.com/thaipduong/LieGroupHamDL/assets/40247151/25a5788c-4711-4e80-9
 ## Citation
 If you find our papers/code useful for your research, please cite our work as follows.
 
-1. T. Duong, N. Atanasov. [Hamiltonian-based Neural ODE Networks on the SE(3) Manifold For Dynamics Learning and Control](https://thaipduong.github.io/SE3HamDL/). RSS, 2021
+1. T. Duong, A. Altawaitan, J. Stanley, N. Atanasov. [Port-Hamiltonian Neural ODE Networks on Lie Groups For Robot Dynamics Learning and Control](https://thaipduong.github.io/LieGroupHamDL/). under review, 2023.
+```
+@article{duong23porthamiltonian,
+author = {Thai Duong, Abdullah Altawaitan, Jason Stanley AND Nikolay Atanasov},
+title = {Port-{H}amiltonian Neural {ODE} Networks on Lie Groups For Robot Dynamics Learning and Control},
+journal = {arXiv preprint arXiv:2401.09520},
+year = {2023},
+}
+```
+2. T. Duong, N. Atanasov. [Hamiltonian-based Neural ODE Networks on the SE(3) Manifold For Dynamics Learning and Control](https://thaipduong.github.io/SE3HamDL/). RSS, 2021
 
  ```bibtex
 @inproceedings{duong21hamiltonian,
@@ -130,3 +139,4 @@ month = {July},
 DOI = {10.15607/RSS.2021.XVII.086} 
 }
 ```
+
